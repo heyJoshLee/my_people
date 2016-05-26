@@ -1,0 +1,20 @@
+.new_event_main
+  %h1 Edit Event
+  %form
+  .form-group
+    %label{:for => ""} Event Name
+    %input.form-control{:placeholder => "Event Name", :type => "type"}
+  %label{:for => ""} Category
+  %select.form-control
+    %option Music
+    %option Tech
+    %option Business Networking
+  .form-group
+    %label{:for => ""} Street Address
+    %input.form-control{:placeholder => "Street Address", :type => "type"}
+  .form-group
+    %label{:for => ""} Zip Code
+    %input.form-control{:placeholder => "Zip Code", :type => "type"}
+    %label{:for => ""} Description
+    %textarea.form-control{:rows => "3"}
+  %button.btn.btn-default{:type => "submit", class: "btn btn-primary"} Save

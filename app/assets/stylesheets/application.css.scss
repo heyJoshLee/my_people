@@ -64,6 +64,8 @@ main {
   text-align: center;
 }
 
+// Events
+
 .show_event_main {
   padding: 20px;
 
@@ -91,6 +93,26 @@ main {
   padding: 20px;
 }
 
+// Groups
+.show_group_main {
+  padding: 20px;
+  .add_post_button {
+    margin: 10px 0;
+  }
+  .group_posts {
+    list-style: none;
+    .group_post {
+      padding: 10px;
+      + .group_post {
+        border-top: 1px solid lightgrey;
+      }
+    }
+  }
+}
+
+.full_width {
+  width: 100%;
+}
 .circle {
   border-radius: 100%;
 }
