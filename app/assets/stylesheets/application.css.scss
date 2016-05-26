@@ -10,10 +10,44 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
 
- @import "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import "bootstrap";
+
+.home_page_wlecome_div {
+  color: snow;
+  background: white url("home_welcome_bkg.jpg");
+  background-size: cover;
+  text-align: center;
+  padding-top: 50px;
+  height: 400px;
+  box-sizing: border-box;
+  h1 {
+    margin: 0;
+  }
+}
+
+.navbar {
+  margin: 0;
+}
+
+.sign_up, .sign_in {
+  font-size: 20px;
+  margin: 10px 5px;
+  box-sizing: border-box;
+  height: 50px;
+  width: 100px;
+  display: inline-block;
+  padding-top: 10px;
+}
+
+main {
+  padding: 0 0 50px 0 !important;
+}
+
+.add_side_padding {
+  padding-left: 5%;
+  padding-right: 5%;
+}
