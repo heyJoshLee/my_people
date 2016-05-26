@@ -16,6 +16,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+a {
+  color: inherit;
+}
+
 .home_page_wlecome_div {
   color: snow;
   background: white url("home_welcome_bkg.jpg");

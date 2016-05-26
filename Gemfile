@@ -10,6 +10,8 @@ gem 'haml-rails'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem "bootstrap-sass"
+gem 'bootstrap_form'
+
 gem "autoprefixer-rails"
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -38,6 +40,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "pry"
+  gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda-matchers', '2.7.0'
+  gem "capybara"
+  gem 'fabrication'
+  gem "faker"
+  gem "launchy"
+
 end
 
 group :development do
