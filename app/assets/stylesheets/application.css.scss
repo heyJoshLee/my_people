@@ -114,6 +114,22 @@ main {
   padding: 20px;
 }
 
+.group_members_main {
+  padding: 20px;
+  .group_members {
+    list-style: none;
+    padding: 20px;
+    text-align: center;
+    .member_preview {
+      border-radius: 5px;
+      margin: 5px;
+      padding: 10px;
+      box-sizing: border-box;
+      background: rgba(240, 240, 240, 0.4);
+    }
+  }
+}
+
 .full_width {
   width: 100%;
 }
