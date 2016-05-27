@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       AppMailer.send_welcome_email(@user).deliver
       flash[:success] = "Your account was created. Please log in."
-      redirect_to log_in_path
+      redirect_to sign_in_path
     else
       flash.now[:danger] = "Something went wrong and your account was not created."
       render :new

@@ -22,7 +22,7 @@ describe UsersController do
       end
 
       it "redirects to log in path" do
-        expect(response).to redirect_to log_in_path
+        expect(response).to redirect_to sign_in_path
       end
 
       it "creates user" do

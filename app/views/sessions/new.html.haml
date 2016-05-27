@@ -1,0 +1,8 @@
+.container
+  = form_tag sign_in_path, class: "form-signin" do
+    %h2.form-signin-heading Please sign in
+    = label_tag :email, "Email Address", class: "hide_me"
+    = email_field_tag :email, "Email Address", class: "form-control"
+    = label_tag :password, "Password", class: "hide_me"
+    = password_field_tag :password, "Password", class: "form-control"
+    %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Sign In
