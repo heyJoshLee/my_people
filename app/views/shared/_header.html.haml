@@ -16,19 +16,24 @@
         %li
           %a{:href => "#"} Groups
       %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => "#"} Sign In
-        %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            My Account
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a{:href => "#"} My Groups and Events
-            %li
-              %a{:href => "#"} View Profile
-            %li.divider{:role => "separator"}
-            %li
-              %a{:href => "#"} Account Settings
+        - if logged_in?
+          %li
+            = link_to "Sign Out", sign_out_path
+        - else
+          %li
+            = link_to "Sign In", sign_in_path
+        - if logged_in?
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              My Account
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} My Groups and Events
+              %li
+                %a{:href => "#"} View Profile
+              %li.divider{:role => "separator"}
+              %li
+                %a{:href => "#"} Account Settings
     / /.navbar-collapse
   / /.container-fluid
