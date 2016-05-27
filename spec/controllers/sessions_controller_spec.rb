@@ -46,5 +46,20 @@ describe SessionsController do
       end
     end
   end
+
+  describe "GET destroy" do
+
+    before do
+      get :destroy
+    end
+
+    it "sets session[:user_id] to nil" do
+      expect(session[:user_id]).to be_nil
+    end
+
+    it "redirects to the home path" do
+      expect(response).to redirect_to root_path
+    end
+  end
   
 end

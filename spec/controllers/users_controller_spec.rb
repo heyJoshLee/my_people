@@ -58,6 +58,7 @@ describe UsersController do
       it "does not send a welcome email" do
         expect(ActionMailer::Base.deliveries).to be_empty
       end
+
     end
   end
 
