@@ -5,7 +5,7 @@ describe EventsController do
   describe "GET new" do
 
     it "sets @event" do
-      log_in
+      sign_in
       get :new
       expect(assigns(:event)).to be_instance_of(Event)
     end
@@ -22,7 +22,7 @@ describe EventsController do
       let(:alice) { Fabricate(:user)}
 
       before do
-        log_in(alice)
+        sign_in(alice)
         post :create, event: event_params
       end
 
@@ -49,7 +49,7 @@ describe EventsController do
       let (:invalid_params) { {name: "Hi there"} }
 
       before do
-        log_in
+        sign_in
         post :create, event: invalid_params
       end
 

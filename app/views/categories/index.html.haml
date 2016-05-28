@@ -1,0 +1,12 @@
+.categories_show_main
+  %h1 Categories
+  %ul.categories_preview
+    - @categories.each do |category|
+      %li.category_preview.row
+        .col-md-4
+          %img{:src => "http://placehold.it/350x150", :alt => ""}/
+        .col-md-6.col-md-offset-2
+          %h4 
+            = link_to category.name, category_path(category)
+          %h6 44 (events)
+          %h6 12 (groups)

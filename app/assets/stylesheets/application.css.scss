@@ -20,6 +20,10 @@ a {
   color: inherit;
 }
 
+li {
+  list-style: none;
+}
+
 .home_page_wlecome_div {
   color: snow;
   background: white url("home_welcome_bkg.jpg");
@@ -160,6 +164,26 @@ main {
 .search_results_main {
   padding: 20px;
 }
+
+
+// Categories
+
+.categories_show_main {
+  padding: 20px;
+
+  .categories_preview{
+    padding: 0;
+    .category_preview {
+      padding: 5px 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  
+
+}
+
+
 
 .hide_me {
   display: none !important;

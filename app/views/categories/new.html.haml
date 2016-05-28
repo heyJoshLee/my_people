@@ -1,0 +1,7 @@
+.new_event_main
+  %h1 Create New Category
+  %form
+  = bootstrap_form_for @category do |f|
+    .form-group
+      = f.text_field :name
+    = f.submit "Create Category", class: "btn btn-primary"
