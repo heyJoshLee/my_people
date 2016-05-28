@@ -1,0 +1,16 @@
+.new_event_main
+  %h1 Create New Event
+  = bootstrap_form_for @event do |f|
+    .form-group
+      = f.text_field :name
+      = f.label :category, "Category"
+    %select.form-control
+      %option Music
+      %option Tech
+      %option Business Networking
+    .form-group
+      = f.text_field :street_address
+    .form-group
+      = f.text_field :zip_code
+      = f.text_area :description, rows: 3
+      = f.submit "Create Event", class: "btn btn-primary"

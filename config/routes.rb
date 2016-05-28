@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
 
   get "sign_out", to: "sessions#destroy"
+  
+  get "event_not_found", to: "events#not_found"
 
   root to: "pages#home"
 
-  resources :users
+  resources :users, only: [:new, :create]
+
+  resources :events, only: [:new, :create, :show]
  
 end
