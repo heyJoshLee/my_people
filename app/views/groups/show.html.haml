@@ -1,0 +1,49 @@
+.show_group_main
+  %header.row
+    .col-md-8
+      %h1=  @group.name
+      %h4
+        = link_to @group.category.name, category_path(@group.category)
+      %small #{@group.city}, #{@group.state} #{@group.zip_code}
+    .col-md-2
+      %h4 Group Leader
+      %h5= @group.creator.name
+    .col-md-2
+      %img.circle{:src => "http://placehold.it/100x100"}/
+
+  %p.well= @group.description
+  %h3 Announcements
+
+  .well Welcome Everyone! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint neque quaerat beatae doloribus molestiae velit, alias quidem ab expedita, earum tempora nemo ipsum. Tempore quas, fugiat fuga magni ex facilis!
+
+  %h4 Posts
+  %hr/
+  %form{:action => ""}
+    %h4 Add new post
+    %textarea.form-control{:rows => "3"}
+    %input{:type => "submit", :value => "Add Post", class: "btn btn-sm btn-primary full_width add_post_button"}/
+  %ul.group_posts
+    %li.group_post
+      .row
+        %p.col-md-8 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. 
+        .col-md-2
+          %h5 John Smith
+        .col-md-2
+          %img.circle{:src => "http://placehold.it/100x100"}/
+      %small  5 minutes ago
+    %li.group_post
+      .row
+        %p.col-md-8 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. 
+        .col-md-2
+          %h5 John Smith
+        .col-md-2
+          %img.circle{:src => "http://placehold.it/100x100"}/
+      %small  1 week ago
+    %li.group_post
+      .row
+        %p.col-md-8 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est delectus excepturi, sapiente non odio, minima eum mollitia aut tenetur fugiat porro eos, voluptatem obcaecati. 
+        .col-md-2
+          %h5 John Smith
+        .col-md-2
+          %img.circle{:src => "http://placehold.it/100x100"}/
+      %small  January 10th, 2015
