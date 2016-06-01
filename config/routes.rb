@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :events, only: [:new, :create, :show]
+  resources :events, only: [:new, :create, :show] do
+    resources :comments, only: [:create]
+  end
 
   resources :categories, only: [:new, :create, :show, :index]
 
