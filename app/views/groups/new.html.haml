@@ -1,0 +1,19 @@
+.new_event_main
+  %h1 Create New Group
+  = bootstrap_form_for @group do |f|
+    .form-group
+      = f.text_field :name
+    .form-group
+      = f.select :category_id, categories_dropdown
+    .form_group
+      = f.text_field :city
+    .form_group
+      = f.text_field :state
+    .form-group
+      = f.text_field :zip_code
+    .form_group
+      = f.text_field :country
+    .form-group
+      = f.text_area :description, rows: 5
+    .form_group
+    = f.submit "Create Group", class: "btn btn-primary"

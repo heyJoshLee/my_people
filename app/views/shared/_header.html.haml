@@ -14,7 +14,7 @@
         %li
           %a{:href => "#"} Events
         %li
-          %a{:href => "#"} Groups
+          = link_to "Groups", groups_path
       %ul.nav.navbar-nav.navbar-right
         - if logged_in?
           %li

@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :show]
 
   resources :categories, only: [:new, :create, :show, :index]
+
+  resources :groups
  
 end
