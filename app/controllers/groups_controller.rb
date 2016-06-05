@@ -24,6 +24,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def update
@@ -34,13 +35,6 @@ class GroupsController < ApplicationController
       flash[:danger] = "There was an error and your Post was not saved"
       render :edit
     end
-  end
-
-  def comment
-    @comment = @group.comments.build(comment_params)
-    @comment.user_id = current_user.id
-    @comment.save
-    redirect_to group_path(@group)
   end
 
   private

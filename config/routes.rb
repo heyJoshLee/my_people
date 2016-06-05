@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :users, only: [:new, :create]
+
   resources :groups do
-    member do
-      post :comment
-    end
+    resources :comments, only: [:create]
   end
 
   resources :events, only: [:new, :create, :show] do
+    resources :comments, only: [:create]
   end
 
   resources :categories, only: [:new, :create, :show, :index]

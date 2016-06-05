@@ -52,7 +52,7 @@ li {
 }
 
 main {
-  padding: 0 0 50px 0 !important;
+  padding: 0 20px 50px 20px !important;
 }
 
 .add_side_padding {
@@ -75,7 +75,6 @@ main {
 // Events
 
 .show_event_main {
-  padding: 20px;
 
   header {
     margin-bottom: 20px;
@@ -97,13 +96,9 @@ main {
   }
 }
 
-.new_event_main {
-  padding: 20px;
-}
 
 // Groups
 .show_group_main {
-  padding: 20px;
   .add_post_button {
     margin: 10px 0;
   }
@@ -118,12 +113,8 @@ main {
   }
 }
 
-.group_events_main {
-  padding: 20px;
-}
 
 .group_members_main {
-  padding: 20px;
   .group_members {
     list-style: none;
     padding: 20px;
@@ -139,9 +130,6 @@ main {
 }
 
 // User
-.show_user_main {
-  padding: 20px;
-}
 
 .user_memberships {
   list-style: none;
@@ -151,18 +139,6 @@ main {
   input {
     margin: 10px 0;
   }
-}
-
-// City
-
-.city_view_main {
-  padding: 20px;
-}
-
-// Search
-
-.search_results_main {
-  padding: 20px;
 }
 
 
