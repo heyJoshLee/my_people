@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, length: {minimum: 5, maximum: 20}
 
+  has_many :memberships
+  has_many :groups, through: :memberships
+
 end
