@@ -1,0 +1,14 @@
+%h1 Events
+%hr
+
+- @events.each do |event|
+  .row
+    .col-sm-6.col-md-4
+      .thumbnail
+        %img{:alt => "...", :src => "..."}
+          .caption
+            %h3
+              = link_to event.name, event_path(event)
+            %p= event.description
+            %a.btn.btn-primary{:href => "#", :role => "button"} Button
+            %a.btn.btn-default{:href => "#", :role => "button"} Button
