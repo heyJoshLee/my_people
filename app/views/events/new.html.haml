@@ -1,16 +1,26 @@
+%script(src="datetime_picker.js")
 .new_event_main
-  %h1 Create New Event
-  = bootstrap_form_for @event do |f|
-    .form-group
-      = f.text_field :name
-      = f.label :category, "Category"
-    %select.form-control
-      %option Music
-      %option Tech
-      %option Business Networking
-    .form-group
-      = f.text_field :street_address
-    .form-group
-      = f.text_field :zip_code
-      = f.text_area :description, rows: 3
-      = f.submit "Create Event", class: "btn btn-primary"
+  .row
+    .col-sm-6
+      %h1 Create New Event
+      = bootstrap_form_for @event do |f|
+        .form-group
+          = f.text_field :name
+        .row
+          .form-group
+            .col-sm-6
+              = f.text_field :date_time, id: "datetimepicker4", class: "form-control"
+            .col-sm-6
+              = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name
+        .row
+          .form-group
+            .col-sm-6
+              = f.text_field :street_address
+            .col-sm-6
+              = f.text_field :zip_code
+
+        .form-group
+          = f.select :category_id, categories_dropdown
+        .form-group
+          = f.text_area :description, rows: 3
+          = f.submit "Create Event", class: "btn btn-primary"
