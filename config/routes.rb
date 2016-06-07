@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :comments, only: [:create]
-    resources :memberships, only: [:create]
+    resources :memberships, only: [:create, :destroy]
   end
 
   resources :events, only: [:new, :create, :show, :index] do

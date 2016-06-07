@@ -10,9 +10,8 @@
       %h5= @group.creator.name
     .col-md-2
       %img.circle{:src => "http://placehold.it/100x100"}/
-
-  .btn.btn-primary.v_margin
-    = link_to "Join Group", group_memberships_path(@group), method: "post", remote: true
+  #button_container
+    = render_join_or_leave_group_button
 
   %p.well= @group.description
   %h3 Announcements

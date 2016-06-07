@@ -8,4 +8,14 @@ class MembershipsController < ApplicationController
       end
     end
   end
+
+  def destroy
+
+    membership = Membership.find(params[:id])
+    @group = Group.find(membership.group_id)
+    membership.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
 end

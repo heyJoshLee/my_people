@@ -24,5 +24,16 @@ describe MembershipsController do
       it "sets role as 'admin'"
     end
   end
+
+  describe "DELETE destroy" do
+    let(:group) { Fabricate(:group) }
+    let(:alice) { Fabricate(:user) }
+    let(:membership) { Fabricate(:membership, group_id: group.id, user_id: alice.id)}
+
+    it "deletes the membership" do
+      delete :destroy, group_id: group.id, id: membership.id
+      expect(Membership.count).to eq(0)
+    end
+  end
   
 end

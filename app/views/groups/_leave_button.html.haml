@@ -1,0 +1,2 @@
+.btn.btn-warning.v_margin
+  = link_to "Leave Group", group_membership_path(@group, current_user.memberships.where(group_id: @group.id).first), method: "delete", data: {confirm: "Are you sure you want to delete this group?"}, remote: true

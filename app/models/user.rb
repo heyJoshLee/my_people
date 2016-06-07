@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :groups, through: :memberships
 
+  def is_member_of?(group)
+    groups.where(id: group.id).length > 0 ? true : false
+  end
+
 end
