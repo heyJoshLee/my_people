@@ -10,4 +10,17 @@ module ApplicationHelper
       render partial: "join_button"
     end
   end
+
+  def render_rsvp_button
+    if current_user.is_going_to?(@event)
+      render partial: "un_rsvp_button"
+    else
+      render partial: "rsvp_button"
+    end
+  end
 end
+
+
+# create
+# mark as true
+# mark as false

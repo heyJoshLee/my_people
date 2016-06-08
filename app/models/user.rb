@@ -11,8 +11,15 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :groups, through: :memberships
 
+  has_many :rsvps
+
   def is_member_of?(group)
     groups.where(id: group.id).length > 0 ? true : false
+  end
+
+  def is_going_to?(event)
+    rsvp = rsvps.where(event_id: event.id).first
+    rsvp && rsvp.going
   end
 
 end

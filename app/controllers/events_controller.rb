@@ -24,6 +24,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @rsvp = Rsvp.new
     @event = Event.find_by(slug: params[:id])
   end
 

@@ -19,6 +19,11 @@
 
 a {
   color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
 }
 
 li {
@@ -174,4 +179,8 @@ main {
 
 .input-group-addon {
   height: 10px !important;
+}
+
+.remove_top_margin {
+  margin-top: 0;
 }

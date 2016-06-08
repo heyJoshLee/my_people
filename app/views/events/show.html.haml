@@ -2,40 +2,33 @@
   .row
     %header
       .col-md-8
-        %h2 Super cool event title
-        %h5 101 Main Street, Detroit, Michigan
-        %small January 12th, 2016 @ 5:00PM
+        %h2= @event.name
+        %h5= @event.street_address
+        %small= @event.date_time
       .col-md-2
         %h4 Created by
-        %h5 John Smith
+        %h5=  @event.creator.name
       .col-md-2
         %img.img-circle{:src => "http://placehold.it/100x100"}/
+  #button_container
+    = render_rsvp_button
 
+  .row
+    %p.well.col-md-8= @event.description
 
-  %p.well Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum inventore perferendis voluptatibus eos harum esse, rerum, facilis quod porro iste odio quia, facere consectetur nihil. Similique, consequuntur. Sunt nemo, voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum inventore perferendis voluptatibus eos harum esse, rerum, facilis quod porro iste odio quia, facere consectetur nihil. Similique, consequuntur. Sunt nemo, voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum inventore perferendis voluptatibus eos harum esse, rerum, facilis quod porro iste odio quia, facere consectetur nihil. Similique, consequuntur. Sunt nemo, voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum inventore perferendis voluptatibus eos harum esse, rerum, facilis quod porro iste odio quia, facere consectetur nihil. Similique, consequuntur. Sunt nemo, voluptas.
-
-  %h4 Attendees
-  %ul.nav.nav-tabs
-    %li.active{:role => "presentation"}
-      %a{:href => "#"} Going
-    %li{:role => "presentation"}
-      %a{:href => "#"} Not Going
-  %ul.attendees.attendees_going
-    %li.row.attendee
-      .col-md-8.attendee_name John Smith
-      .col-md-4
-        %img.circle{:src => "http://placehold.it/100x100"}/
-    %li.row.attendee
-      .col-md-8.attendee_name John Smith
-      .col-md-4
-        %img.circle{:src => "http://placehold.it/100x100"}/
-    %li.row.attendee
-      .col-md-8.attendee_name John Smith
-      .col-md-4
-        %img.circle{:src => "http://placehold.it/100x100"}/
-    %li.row.attendee
-      .col-md-8.attendee_name John Smith
-      .col-md-4
-        %img.circle{:src => "http://placehold.it/100x100"}/
-
+    .col-md-4
+      %h4.remove_top_margin Attendees
+      %ul.nav.nav-tabs
+        %li.nav.active
+          %a{"data-toggle" => "tab", :href => "#going"} Going
+        %li.nav
+          %a{"data-toggle" => "tab", :href => "#not_going"} Not Going
+      / Tab panes
+      .tab-content
+        #going.tab-pane.fade.in.active
+          - @event.all_going.each do |rsvp|
+            = render "rsvps/rsvp", rsvp: rsvp
+        #not_going.tab-pane.fade
+          - @event.all_not_going.each do |rsvp|
+            = render "rsvps/rsvp", rsvp: rsvp
 

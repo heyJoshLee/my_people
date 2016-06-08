@@ -1,6 +1,5 @@
 class Event < ActiveRecord::Base
   belongs_to :creator, foreign_key: "user_id", class_name: "User"
-#  belongs_to :category
 
   validates :name, presence: true, length: {minimum: 3, maximum: 100}
   validates :street_address, presence: true
@@ -8,7 +7,9 @@ class Event < ActiveRecord::Base
   validates :description, presence: true
   validates :date_time, presence: true
 
- before_create :generate_random_slug
+  has_many :rsvps, -> {order("created_at DESC")}
+
+  before_create :generate_random_slug
 
   def generate_random_slug
     self.slug = SecureRandom.urlsafe_base64
@@ -18,5 +19,12 @@ class Event < ActiveRecord::Base
     self.slug
   end
 
+  def all_going
+    rsvps.where(going: true)
+  end
+
+  def all_not_going
+    rsvps.where(going: false)
+  end
 
 end

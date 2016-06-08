@@ -1,7 +1,19 @@
 class RsvpsController < ApplicationController 
+  before_filter :require_user
+
   def create
-    @rsvp = Rsvp.new
-    @rsvp.save
+    rsvp = Rsvp.where(user_id: current_user.id, event_id: Event.find_by(slug: params[:event_id])).first
+    if rsvp
+      rsvp.update_column(:going, false)
+    else
+      going = params[:going]
+      @event = Event.find_by(slug: params[:event_id])
+      @rsvp = Rsvp.new(user_id: current_user.id, event_id: @event.id, going: going)
+      @rsvp.save
+    end
+      respond_to do |format|
+        format.js
+      end
   end
 end
 
