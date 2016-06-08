@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:new, :create, :show, :index] do
     resources :comments, only: [:create]
+    resources :rsvps, only: [:create]
   end
 
   resources :categories, only: [:new, :create, :show, :index]

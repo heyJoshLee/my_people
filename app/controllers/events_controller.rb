@@ -24,15 +24,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by_id(params[:id])
-    redirect_to event_not_found_path unless @event
+    @event = Event.find_by(slug: params[:id])
   end
 
   private
 
   def event_params
-    params.require(:event).permit!
-    
+    params.require(:event).permit!    
   end
 
 end
