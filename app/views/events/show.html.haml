@@ -31,4 +31,7 @@
         #not_going.tab-pane.fade
           - @event.all_not_going.each do |rsvp|
             = render "rsvps/rsvp", rsvp: rsvp
+  %h4 Posts
+  %hr/
+  = render "comments/comments_section", object: @event, object_type: "Event"
 

@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   validates :date_time, presence: true
 
   has_many :rsvps, -> {order("created_at DESC")}
+  has_many :comments, -> {order("created_at DESC")}, as: :commentable
 
   before_create :generate_random_slug
 

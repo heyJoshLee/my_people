@@ -12,18 +12,20 @@
       %img.circle{:src => "http://placehold.it/100x100"}/
   #button_container
     = render_join_or_leave_group_button
+  .row
+    .col-md-8
+      %p.well= @group.description
+    .col-md-4
+      %h4.remove_top_margin Members
+      %hr/
+      %ul.members_preview
+        - @group.members.each do |member|
+          = render "groups/member", member: member
 
-  %p.well= @group.description
   %h3 Announcements
 
   .well Welcome Everyone! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint neque quaerat beatae doloribus molestiae velit, alias quidem ab expedita, earum tempora nemo ipsum. Tempore quas, fugiat fuga magni ex facilis!
 
   %h4 Posts
   %hr/
-  = bootstrap_form_for [@group, @comment], remote: true do |f|
-    = f.label :body, "Comment"
-    = f.text_area :body, html: {class: "form-control"}
-    = f.submit "Submit", class: "btn btn-sm btn-primary"
-    = hidden_field_tag :object_type, "Group"
-  %ul.group_posts
-    = render @group.comments
+  = render "comments/comments_section", object: @group, object_type: "Group"

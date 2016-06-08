@@ -18,8 +18,12 @@ class Group < ActiveRecord::Base
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
   belongs_to :category
 
-  has_many :comments, as: :commentable
+  has_many :comments, -> {order("created_at DESC")}, as: :commentable
   has_many :memberships
   has_many :users, through: :memberships
+
+  def members
+    users.order("created_at DESC")
+  end
 
 end

@@ -1,11 +1,10 @@
 ## TODO
-* Add memberships
 * Add admin roles
-* Add edit group, event, player
+* Add edit group, event, user
 * Add profile picture upload
 * Add event / group picture upload
 * Feature tests
-* Add RSVP to group
+* Fix  rsvp button
 * RSVP AJAX change
 * Add search city
 * View events close to me

@@ -1,0 +1,7 @@
+= bootstrap_form_for [object, @comment], remote: true do |f|
+  = f.label :body, "Comment"
+  = f.text_area :body, html: {class: "form-control"}
+  = f.submit "Submit", class: "btn btn-sm btn-primary"
+  = hidden_field_tag :object_type, object_type
+%ul.group_posts
+  = render object.comments
