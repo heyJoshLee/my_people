@@ -208,3 +208,13 @@ main {
   color: rgba(52, 152, 219,1.0);
   display: none;
 }
+.glyphicon-question-sign:hover {
+  cursor: help;
+}
+
+#new_announcemnt_form {
+  display: none;
+}
+#add_new_announcemet:hover {
+  cursor: pointer;
+}

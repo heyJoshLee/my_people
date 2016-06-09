@@ -18,3 +18,12 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require_tree .
+
+
+$(function() {
+  $("#add_new_announcemet").on("click", function(e) {
+    e.preventDefault();
+    $("#new_announcemnt_form").toggle();
+  });
+
+});
