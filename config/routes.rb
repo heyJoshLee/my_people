@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    resources :announcements, only: [:create] do
+    resources :announcements, only: [:create, :destroy] do
       collection { post :sort }
     end
     resources :comments, only: [:create]

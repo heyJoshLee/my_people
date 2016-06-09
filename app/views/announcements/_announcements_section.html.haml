@@ -4,5 +4,6 @@
   = f.submit "Submit", class: "btn btn-sm btn-primary"
   = hidden_field_tag :object_type, object_type
 %h5 Announcements
+%small#saving Saving...
 %ul#announcements.v_margin{"data-update-url" => sort_group_announcements_path(object)}
   = render object.announcements

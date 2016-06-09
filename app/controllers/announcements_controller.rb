@@ -1,6 +1,7 @@
 class AnnouncementsController < ApplicationController
   before_filter :require_user, only: [:create]
 
+
   def create
     @object = {}
     determine_commentable_object_type
@@ -22,6 +23,18 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       format.js { render :nothing => true }
+    end
+  end
+
+  def destroy
+    @announcement = Announcement.find(params[:id])
+    @group  = @announcement.group
+    @id = params[:id]
+    if current_user.can_modify_group?(@group) && @announcement.destroy
+      @group.set_announcements_positions
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

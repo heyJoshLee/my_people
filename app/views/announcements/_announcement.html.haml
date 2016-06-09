@@ -1,3 +1,7 @@
 %li.announcement{id: "announcement_#{announcement.id}"}
-  .row
-    %p.col-md-12.well= announcement.body
+  .row.well
+    .col-md-10
+      = announcement.body
+    .col-md-1
+      = link_to group_announcement_path(announcement.group, announcement), remote: true,  method: "DELETE" do
+        %i.glyphicon.glyphicon-remove

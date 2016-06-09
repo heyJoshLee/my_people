@@ -2,7 +2,10 @@ $(function() {
   $("#announcements").sortable({
     axis: "y",
     update: function() {
-      $.post($(this).data("update-url"), $(this).sortable("serialize"))
+      $("#saving").fadeIn();
+      $.post($(this).data("update-url"), $(this).sortable("serialize")).done(function() {
+        $("#saving").fadeOut();
+      })
     }
   });
 });
