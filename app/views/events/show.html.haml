@@ -5,14 +5,11 @@
         %h2= @event.name
         %h5= @event.street_address
         %small= @event.date_time
-      .col-md-2
-        %h4 Created by
-        %h5=  @event.creator.name
-      .col-md-2
-        %img.img-circle{:src => "http://placehold.it/100x100"}/
+      = render "users/creator", object: @event
   #button_container
     = render_rsvp_button
 
+  %img{:src => "#{@event.img}", :alt => ""}/
   .row
     %p.well.col-md-8= @event.description
 

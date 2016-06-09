@@ -10,14 +10,15 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:show, :new, :create, :edit, :update] do
+    resources :comments, only: [:create]
+  end
 
   resources :groups do
     resources :comments, only: [:create]
     resources :memberships, only: [:create, :destroy]
   end
-
-  resources :events, only: [:new, :create, :show, :index] do
+  resources :events, only: [:new, :create, :show, :index, :edit, :update] do
     resources :comments, only: [:create]
     resources :rsvps, only: [:create]
   end

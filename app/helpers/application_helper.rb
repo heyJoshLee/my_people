@@ -18,6 +18,7 @@ module ApplicationHelper
       render partial: "rsvp_button"
     end
   end
+
 end
 
 

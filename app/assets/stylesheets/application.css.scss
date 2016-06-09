@@ -30,6 +30,10 @@ li {
   list-style: none;
 }
 
+ul {
+  padding: 0;
+}
+
 .home_page_wlecome_div {
   color: snow;
   background: white url("home_welcome_bkg.jpg");
@@ -183,4 +187,19 @@ main {
 
 .remove_top_margin {
   margin-top: 0;
+}
+
+.margin_center {
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.upcoming_rsvp {
+  + .upcoming_rsvp {
+    border-top: 1px solid rgba(240, 240, 240, 0.8);
+  }
+}
+
+.user_page_comments  {
+  border-right: 1px solid lightgrey;
 }

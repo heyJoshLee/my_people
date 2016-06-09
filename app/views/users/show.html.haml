@@ -1,0 +1,31 @@
+.margin_center
+  - if @user.private_profile
+    .well
+      %h2 This profile is private
+  - else
+    %h1 #{@user.name}'s profile
+    %img.img-circle{:src => "http://placehold.it/100x100"}/
+    - if @user.profile_description
+      .well.v_margin= @user.profile_description
+    .row
+      .col-md-5.user_page_comments
+        %h4 Posts
+        %hr/
+        = render "comments/comments_section", object: @user, object_type: "User"
+      .col-md-6.col-md-offset-1.user_page_rsvps_and_groups
+        - if @user.upcoming_rsvps 
+          %h3 Upcoming Events
+          .upcoming_rsvps
+            - @user.upcoming_rsvps.each do |event|
+              .li.upcoming_rsvp
+                .row
+                  .col-md-4
+                    %h4= event.name
+                  .col-md-4
+                    %h4= event.date_time
+                .row
+                  .col-md-4
+                    .thumbnail
+                      %img{:alt => "...", :src => "..."}
+                  .col-md-8= event.description_truncated
+

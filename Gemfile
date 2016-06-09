@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
@@ -17,6 +17,10 @@ gem "bcrypt-ruby"
 gem "sluggable_jl"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem "carrierwave"
+gem 'carrierwave-aws'
+gem "mini_magick"
+
 
 
 gem 'sdoc', '~> 0.4.0', group: :doc

@@ -28,4 +28,8 @@ class Event < ActiveRecord::Base
     rsvps.where(going: false)
   end
 
+  def description_truncated(max=140)
+    description[0..max]
+  end
+
 end

@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
   def determine_commentable_object_type
     @object_class = params[:object_type].constantize
-    slug = params[:group_id] || params[:event_id]
+    slug = params[:group_id] || params[:event_id] || params[:user_id]
     @object = @object_class.find_by(slug: slug)
   end
 end

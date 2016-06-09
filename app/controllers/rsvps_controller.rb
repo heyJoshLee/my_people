@@ -8,7 +8,7 @@ class RsvpsController < ApplicationController
     else
       going = params[:going]
       @event = Event.find_by(slug: params[:event_id])
-      @rsvp = Rsvp.new(user_id: current_user.id, event_id: @event.id, going: going)
+      @rsvp = current_user.rsvps.build(event_id: @event.id, going: going)
       @rsvp.save
     end
       respond_to do |format|
