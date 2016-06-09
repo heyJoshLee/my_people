@@ -36,4 +36,8 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def has_announcements?
+    !announcements.empty?
+  end
+
 end

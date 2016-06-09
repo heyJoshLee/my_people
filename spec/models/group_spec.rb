@@ -31,6 +31,17 @@ describe Group do
       expect(group.members).to match_array(members)
     end
 
+    describe "#has_announcements?" do
+      let(:group) { Fabricate(:group) }
+      it "returns true if group an announcement" do
+        group.announcements.create(body: "hi there", position: 1)
+        expect(group.has_announcements?).to be_truthy
+      end
+      it "returns false if group has announcements" do
+        expect(group.has_announcements?).to be_falsey
+      end
+    end
+
 end
 
 

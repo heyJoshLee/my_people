@@ -1,17 +1,22 @@
 class AnnouncementsController < ApplicationController
   before_filter :require_user, only: [:create]
 
-
   def create
     @object = {}
     determine_commentable_object_type
-    @announcement = @object.announcements.build(announcement_params)
-    @announcement.position = 0
-    @announcement.user_id = current_user.id
-    if @announcement.save
-      @object.set_announcements_positions
-      respond_to do |format|
-        format.js
+
+    if !current_user.can_modify_group?(@object)
+      flash[:danger] = "You do not have permission to do that"
+      redirect_to root_path
+    else 
+      @announcement = @object.announcements.build(announcement_params)
+      @announcement.position = 0
+      @announcement.user_id = current_user.id
+      if @announcement.save
+        @object.set_announcements_positions
+        respond_to do |format|
+          format.js
+        end
       end
     end
   end

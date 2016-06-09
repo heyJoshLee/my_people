@@ -3,7 +3,7 @@
     .col-md-8
       %h1=  @group.name
       - if current_user.can_modify_group?(@group)
-        %small 
+        %small.blue_text
           = link_to "Modify Group", edit_group_path(@group)
       %h4
         = link_to @group.category.name, category_path(@group.category)
@@ -25,9 +25,12 @@
         - @group.members.each do |member|
           = render "groups/member", member: member
 
-  %h3 Announcements
-
-  .well Welcome Everyone! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint neque quaerat beatae doloribus molestiae velit, alias quidem ab expedita, earum tempora nemo ipsum. Tempore quas, fugiat fuga magni ex facilis!
+  - if @group.has_announcements?
+    %h3 Announcements
+    .well
+      - @group.announcements.each do |announcement|
+        = announcement.body
+        %hr/
 
   %h4 Posts
   %hr/
