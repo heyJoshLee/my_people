@@ -4,10 +4,11 @@ describe MembershipsController do
   describe "POST create" do
     context "creates membership" do
       let(:alice) { Fabricate(:user) }
+      let(:group) { Fabricate(:group) }
 
       before do
         sign_in(alice)
-        post :create, membership: Fabricate.attributes_for(:membership, user_id: alice.id)
+        post :create, group_id: group.slug, membership: Fabricate.attributes_for(:membership, group_id: group.id, user_id: alice.id), format: :js
       end
       it "creates a membership" do
         expect(Membership.count).to eq(1)
@@ -31,7 +32,7 @@ describe MembershipsController do
     let(:membership) { Fabricate(:membership, group_id: group.id, user_id: alice.id)}
 
     it "deletes the membership" do
-      delete :destroy, group_id: group.id, id: membership.id
+      delete :destroy, group_id: group.id, id: membership.id, format: :js
       expect(Membership.count).to eq(0)
     end
   end

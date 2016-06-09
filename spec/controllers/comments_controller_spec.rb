@@ -9,25 +9,28 @@ describe CommentsController do
 
       before do
         sign_in(alice)
-        post :create, group_id: group.slug, comment: comment_params
       end
 
       it "creates at comment" do
+        post :create, group_id: group.slug, object_type: "Group", comment: comment_params, format: :js
         expect(Comment.count).to eq(1)
       end
 
       it "associates the comment with the post" do
+        post :create, group_id: group.slug, object_type: "Group", comment: comment_params, format: :js
         expect(Group.first.comments.first.body).to eq("Hi there")
       end
 
       it "associates the comment with the current" do
+        patch :create, group_id: group.slug, object_type: "Group", comment: comment_params, format: :js
         expect(Comment.first.creator.id).to eq(alice.id)
+      end
+
+      it_behaves_like "requires sign in" do
+        let(:action) {  patch :create, group_id: group.slug, object_type: "Group", comment: comment_params, format: :js }
       end
     end
 
-    it_behaves_like "requires sign in" do
-      let(:action) { post :create, id: Fabricate(:group).id, comment: Fabricate.attributes_for(:comment) }
-    end
 
   end
 

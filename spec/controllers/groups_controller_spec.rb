@@ -86,12 +86,12 @@ describe GroupsController do
 
     it "updates attributes" do
       sign_in
-      post :update, group: { name: "new group" }
+      put :update, id: group.slug, group: { name: "new group" }
       expect(Group.first.name).to eq("new group")
     end
 
     it_behaves_like "requires sign in" do
-      let(:action) { post :update, group: { name: "new group" } }
+      let(:action) { put :update, id: group.slug, group: { name: "new group" } }
     end
   end
 

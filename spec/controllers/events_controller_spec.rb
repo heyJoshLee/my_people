@@ -72,16 +72,10 @@ describe EventsController do
   end
 
   describe "GET show" do
-
     it "sets event with valid event" do
       event = Fabricate(:event)
-      get :show, id: event.id
+      get :show, id: event.slug
       expect(assigns(:event)).to eq(event)
-    end
-
-    it "redirects to can't find page for invalid event" do
-      get :show, id: "123"
-      expect(response).to redirect_to event_not_found_path
     end
   end
   

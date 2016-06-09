@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
+  before_filter :require_user, only: [:create]
 
   def create
+    @object = {}
     determine_commentable_object_type
     @comment = @object.comments.build(comment_params)
     @comment.user_id = current_user.id

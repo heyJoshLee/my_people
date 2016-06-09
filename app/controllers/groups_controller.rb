@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-  before_filter :require_user, only: [:new, :create, :update, :comment]
+  before_filter :require_user, only: [:new, :create, :update, :comment, :edit]
   before_filter :set_group, only: [:show, :update, :comment, :edit]
 
   def index

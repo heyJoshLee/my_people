@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :users, only: [:show, :new, :create, :edit, :update] do
+  resources :users, except: [:index] do
     resources :comments, only: [:create]
   end
 
