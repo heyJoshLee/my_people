@@ -32,6 +32,18 @@ class User < ActiveRecord::Base
     self.slug = SecureRandom.urlsafe_base64
   end
 
+  def is_admin_of?(group)
+    !memberships.where(group_id: group.id, role: "admin").empty?
+  end
+
+  def is_admin?
+    role == "admin"
+  end
+
+  def can_modify_group?(group)
+    self.is_admin? || self.is_admin_of?(group)
+  end
+
   def to_param
     self.slug
   end

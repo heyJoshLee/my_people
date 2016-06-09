@@ -4,6 +4,6 @@ Fabricator(:membership) do
   role { "user" }
 end
 
-Fabricator(:admin, from: :membership) do
+Fabricator(:admin_membership, from: :membership) do
   role "admin"
 end

@@ -7,6 +7,24 @@ describe User do
   it { should validate_uniqueness_of(:email)}
   it { should have_secure_password }
 
+  describe "#can_modify_group?(group)" do
+    let(:group) { Fabricate(:group) }
+
+    it "returns true if user is admin" do
+      admin = Fabricate(:admin)
+      expect(admin.can_modify_group?(group)).to be_truthy
+    end
+    it "returns true if user is admin of the group" do
+      admin_for_group = Fabricate(:user)
+      Membership.create(group_id: group.id, user_id: admin_for_group.id, role: "admin")
+      expect(admin_for_group.can_modify_group?(group)).to be_truthy
+    end
+    it "returns false if the user is not an admin or admin for the group" do
+      user = Fabricate(:user)
+      expect(user.can_modify_group?(group)).to be_falsey
+    end
+  end
+
   describe "#is_member_of?(group)" do
     let(:alice) { Fabricate(:user) }
     let(:group) {Fabricate(:group) }
@@ -70,6 +88,37 @@ describe User do
       rsvp_9 = Fabricate(:rsvp, user_id: user.id, event_id: event_9.id)
 
       expect(user.upcoming_rsvps).to match_array([event_1, event_2, event_3, event_4, event_5, event_6])
+    end
+  end
+
+  describe "#is_admin_of?(group)" do
+    let(:user) { Fabricate(:user) }
+    let(:group) { Fabricate(:user) }
+
+    it "returns false if user does not have a membership in the group" do
+      expect(user.is_admin_of?(group)).to be_falsey
+    end
+
+    it "returns false if user has a membership for the group without the role of 'user" do
+      Membership.create(group_id: group.id, user_id: user.id)
+      expect(user.is_admin_of?(group)).to be_falsey
+    end
+
+    it "returns true if user has a membership of the group with the role of 'admin'" do
+      Membership.create(group_id: group.id, user_id: user.id, role: 'admin')
+      expect(user.is_admin_of?(group)).to be_truthy
+    end
+  end
+
+  describe "#is_admin?" do
+    it "returns true if the user has a role of 'user' " do
+      admin = Fabricate(:admin)
+      expect(admin.is_admin?).to be_truthy
+    end
+
+    it "returns false if the user doesn't have a role of 'user' " do
+      regular_user = Fabricate(:user)
+      expect(regular_user.is_admin?).to be_falsey
     end
   end
 end
