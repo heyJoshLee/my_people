@@ -2,6 +2,9 @@
   %header.row
     .col-md-8
       %h1=  @group.name
+      - if current_user.can_modify_group?(@group)
+        %small 
+          = link_to "Modify Group", edit_group_path(@group)
       %h4
         = link_to @group.category.name, category_path(@group.category)
       %small #{@group.city}, #{@group.state} #{@group.zip_code}

@@ -25,6 +25,11 @@ class GroupsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @announcements = @group.announcements
+  end
+
+  def edit
+    @announcement = Announcement.new
   end
 
   def update

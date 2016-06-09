@@ -21,8 +21,8 @@ describe CommentsController do
         expect(Group.first.comments.first.body).to eq("Hi there")
       end
 
-      it "associates the comment with the current" do
-        patch :create, group_id: group.slug, object_type: "Group", comment: comment_params, format: :js
+      it "associates the comment with the current user" do
+        post :create, group_id: group.slug, object_type: "Group", comment: comment_params, format: :js
         expect(Comment.first.creator.id).to eq(alice.id)
       end
 

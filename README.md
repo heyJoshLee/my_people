@@ -9,7 +9,6 @@
 * View events close to me
 * Show on map
 * Add password rest by email and text
-* Add comments to event, group, user
 * Add announcements 
 * Invite by email
 * Add Friends

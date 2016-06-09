@@ -3,12 +3,17 @@ class MembershipsController < ApplicationController
 
   def create
     @group = Group.find_by(slug: params[:group_id])
-    @membership = Membership.new(group_id: @group.id, user_id: current_user.id)
+    @membership = Membership.new(group_id: @group.id)
+    
     if current_user.is_admin?
       @membership.role = params[:role] || "user"
+      @membership.user_id = params[:user_id]
     else
       @membership.role = "user"
+      @membership.user_id = current_user.id
     end
+
+    @membership.save
 
     respond_to do |format| 
       format.js do

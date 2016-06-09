@@ -19,11 +19,21 @@ class Group < ActiveRecord::Base
   belongs_to :category
 
   has_many :comments, -> {order("created_at DESC")}, as: :commentable
+  has_many :announcements, -> {order("position ASC")}, as: :announceable
+  
   has_many :memberships
   has_many :users, through: :memberships
 
   def members
     users.order("created_at DESC")
+  end
+
+  def set_announcements_positions
+    ActiveRecord::Base.transaction do
+      announcements.each_with_index do |announcement, index|
+        announcement.update_attributes!(position: index + 1)
+      end
+    end
   end
 
 end
