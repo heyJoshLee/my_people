@@ -121,4 +121,25 @@ describe User do
       expect(regular_user.is_admin?).to be_falsey
     end
   end
+
+  describe "#can_modify_event?(event)" do
+
+    it "returns true if the user is an admin" do
+      admin = Fabricate(:admin)
+      event = Fabricate(:event)
+      expect(admin.can_modify_event?(event)).to be_truthy
+    end
+
+    it "returns true is the user is the creator of the event" do
+      user = Fabricate(:user)
+      event = Fabricate(:event, user_id: user.id)
+      expect(user.can_modify_event?(event)).to be_truthy
+    end
+
+    it "returns false if the user doesn't have permission to edit the event" do
+      user = Fabricate(:user)
+      event = Fabricate(:event, user_id: user.id + 1)
+      expect(user.can_modify_event?(event)).to be_falsey
+    end
+  end
 end

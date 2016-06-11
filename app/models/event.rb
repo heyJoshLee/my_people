@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
 
   has_many :rsvps, -> {order("created_at DESC")}
   has_many :comments, -> {order("created_at DESC")}, as: :commentable
-  has_many :announcements, -> {order("created_at DESC")}, as: :announceable
+  has_many :announcements, -> {order("position ASC")}, as: :announceable
 
   before_create :generate_random_slug
 
@@ -32,5 +32,18 @@ class Event < ActiveRecord::Base
   def description_truncated(max=140)
     description[0..max]
   end
+
+  def set_announcements_positions
+    ActiveRecord::Base.transaction do
+      announcements.each_with_index do |announcement, index|
+        announcement.update_attributes!(position: index + 1)
+      end
+    end
+  end
+
+  def has_announcements?
+    !announcements.empty?
+  end
+
 
 end

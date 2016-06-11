@@ -18,10 +18,16 @@ Rails.application.routes.draw do
     resources :announcements, only: [:create, :destroy] do
       collection { post :sort }
     end
+    
     resources :comments, only: [:create]
     resources :memberships, only: [:create, :destroy]
   end
-  resources :events, only: [:new, :create, :show, :index, :edit, :update] do
+
+  resources :events do
+    resources :announcements, only: [:create, :destroy] do
+      collection { post :sort }
+    end
+
     resources :comments, only: [:create]
     resources :rsvps, only: [:create]
   end

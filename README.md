@@ -1,5 +1,4 @@
 ## TODO
-* Add admin roles
 * Add profile picture upload
 * Add event / group picture upload
 * Feature tests

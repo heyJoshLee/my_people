@@ -25,12 +25,7 @@
         - @group.members.each do |member|
           = render "groups/member", member: member
 
-  - if @group.has_announcements?
-    %h3 Announcements
-    .well
-      - @group.announcements.each do |announcement|
-        = announcement.body
-        %hr/
+  = render "shared/announcements_section", object: @group
 
   %h4 Posts
   %hr/

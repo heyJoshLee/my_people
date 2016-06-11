@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, case_sensitve: false
 
   validates :password, presence: true, length: {minimum: 5, maximum: 20}
+  validates :password, presence: true, on: :create
 
   has_many :memberships
   has_many :groups, through: :memberships
+
 
   has_many :rsvps
 
@@ -41,7 +43,13 @@ class User < ActiveRecord::Base
   end
 
   def can_modify_group?(group)
+    return false unless group.class.to_s == "Group"
     self.is_admin? || self.is_admin_of?(group)
+  end
+
+  def can_modify_event?(event)
+    return false unless event.class.to_s == "Event"
+    self.is_admin? || self == event.creator
   end
 
   def to_param

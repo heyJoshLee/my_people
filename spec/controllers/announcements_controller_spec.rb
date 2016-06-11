@@ -51,5 +51,5 @@ describe AnnouncementsController do
     end
 
   end
-  
+
 end

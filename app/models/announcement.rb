@@ -6,4 +6,8 @@ class Announcement < ActiveRecord::Base
   def group
     announceable if announceable.class.to_s == "Group"
   end
+
+  def event
+    announceable if announceable.class.to_s == "Event"    
+  end
 end
