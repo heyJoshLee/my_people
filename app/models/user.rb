@@ -67,5 +67,8 @@ class User < ActiveRecord::Base
     events.length > 0 ? events : false
   end
 
+  def has_groups?
+    groups.length > 0
+  end
 
 end

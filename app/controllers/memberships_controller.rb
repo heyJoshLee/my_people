@@ -7,7 +7,7 @@ class MembershipsController < ApplicationController
     
     if current_user.is_admin?
       @membership.role = params[:role] || "user"
-      @membership.user_id = params[:user_id]
+      @membership.user_id = params[:user_id] || current_user.id
     else
       @membership.role = "user"
       @membership.user_id = current_user.id
