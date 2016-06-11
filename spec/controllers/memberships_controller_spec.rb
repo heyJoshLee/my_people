@@ -36,6 +36,7 @@ describe MembershipsController do
     context "add an admin to the group" do
       let(:group) { Fabricate(:group) }
       let(:regular_user) { Fabricate(:user) }
+
       it "adds an admin to the group if the current user is an admin of the site" do
         admin = Fabricate(:admin)
         sign_in(admin)
@@ -44,13 +45,19 @@ describe MembershipsController do
       end
 
       it "adds an admin to the group if the current user is an admin of the group" do
-        admin_in_group = Fabricate(:user)
-        new_admin_for_group = Fabricate(:user)
-        Membership.create(group_id: group.id, user_id: admin_in_group.id, role: "admin")
-        Membership.create(group_id: group.id, user_id: new_admin_for_group.id, role: "admin")
+        admin_of_group = Fabricate(:user)
+        Membership.create(user_id: admin_of_group.id, group_id: group.id, role: "admin")
+        sign_in(admin_of_group)
+        post :create, group_id: group.slug, role: "admin", membership: Fabricate.attributes_for(:membership, group_id: group.id, user_id: regular_user.id), format: :js
         expect(Membership.last.role).to eq("admin")
       end
-      it "doesn't add the membership if the user is not allowed"
+
+      it "sets new membership role as user if current_user doesn't have permission to add admins" do
+        user = Fabricate(:user)
+        sign_in(user)
+        post :create, group_id: group.slug, role: "admin", membership: Fabricate.attributes_for(:membership, group_id: group.id, user_id: regular_user.id), format: :js
+        expect(Membership.last.role).to eq("user")
+      end
     end
   end
 

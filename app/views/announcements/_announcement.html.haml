@@ -1,0 +1,12 @@
+%li.announcement{id: "announcement_#{announcement.id}"}
+  .row.well
+    .col-md-10
+      = announcement.body
+    .col-md-1
+      - if @group
+        = link_to group_announcement_path(announcement.group, announcement), remote: true,  method: "DELETE" do
+          %i.glyphicon.glyphicon-remove
+      - elsif @event
+        = link_to event_announcement_path(announcement.event, announcement), remote: true,  method: "DELETE" do
+          %i.glyphicon.glyphicon-remove
+

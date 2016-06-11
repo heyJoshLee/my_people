@@ -1,3 +1,8 @@
-.new_event_main
+.new_group_main
+  %small.blue_text
+    = link_to "Back to Group Page", group_path(@group)
   %h1 Edit Group
-  = render "form"
+  .col-md-5
+    = render "form"
+  .col-md-5.col-md-offset-1
+    = render "announcements/announcements_section", object: @group, object_type: "Group"

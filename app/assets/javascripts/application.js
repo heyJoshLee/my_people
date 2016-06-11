@@ -11,9 +11,19 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
 //= require_tree .
+
+
+$(function() {
+  $("#add_new_announcemet").on("click", function(e) {
+    e.preventDefault();
+    $("#new_announcemnt_form").toggle();
+  });
+
+});

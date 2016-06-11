@@ -1,5 +1,4 @@
 ## TODO
-* Add admin roles
 * Add profile picture upload
 * Add event / group picture upload
 * Feature tests
@@ -9,8 +8,7 @@
 * View events close to me
 * Show on map
 * Add password rest by email and text
-* Add comments to event, group, user
-* Add announcements 
 * Invite by email
 * Add Friends
 * Add Facebook login
+* Format timezones
