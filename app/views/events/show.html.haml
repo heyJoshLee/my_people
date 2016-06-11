@@ -12,7 +12,6 @@
   %img{:src => "#{@event.img}", :alt => ""}/
   .row
     %p.well.col-md-8= @event.description
-
     .col-md-4
       %h4.remove_top_margin Attendees
       %ul.nav.nav-tabs
@@ -28,6 +27,8 @@
         #not_going.tab-pane.fade
           - @event.all_not_going.each do |rsvp|
             = render "rsvps/rsvp", rsvp: rsvp
+  = render "shared/announcements_section", object: @event
+
   %h4 Posts
   %hr/
   = render "comments/comments_section", object: @event, object_type: "Event"
