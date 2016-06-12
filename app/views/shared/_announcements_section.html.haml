@@ -1,0 +1,4 @@
+- if object.has_announcements?
+  %h3 Announcements
+  - object.announcements.each do |announcement|
+    .alert.alert-info{role: "alert"}= announcement.body

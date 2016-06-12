@@ -1,0 +1,19 @@
+%a.row#add_new_announcemet
+  .col-md-1
+    %i.glyphicon.glyphicon-plus.v_margin
+  .col-md-10
+    %h5 New Announcement
+#new_announcemnt_form
+  = bootstrap_form_for [object, @announcement], remote: true do |f|
+    = f.text_area :body, html: {class: "form-control"}
+    = f.submit "Submit", class: "btn btn-sm btn-primary"
+    = hidden_field_tag :object_type, object_type
+.row
+  .col-md-4
+    %h5 Announcements
+  .col-md.6.v_margin
+    %i.glyphicon.glyphicon-question-sign{title: "Drag and drop announcements to order them. Announcements will be displayed on the group page in the same order as show below."}
+
+%small#saving Saving...
+%ul#announcements.v_margin{"data-update-url" => sort_group_announcements_path(object)}
+  = render object.announcements

@@ -1,0 +1,2 @@
+console.log("Should destroy announcement with id of <%= @id %>");
+$("#announcement_<%=@id%>").fadeOut("slow", function() { $(this).remove(); });

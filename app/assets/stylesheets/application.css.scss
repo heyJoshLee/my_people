@@ -17,6 +17,8 @@
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 
+$blue_link_color: rgba(52, 152, 219,1.0);
+
 a {
   color: inherit;
   &:hover {
@@ -202,4 +204,22 @@ main {
 
 .user_page_comments  {
   border-right: 1px solid lightgrey;
+}
+
+#saving {
+  color: $blue_link_color;
+  display: none;
+}
+.blue_text {
+  color: $blue_link_color !important;
+}
+.glyphicon-question-sign:hover {
+  cursor: help;
+}
+
+#new_announcemnt_form {
+  display: none;
+}
+#add_new_announcemet:hover {
+  cursor: pointer;
 }

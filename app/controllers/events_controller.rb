@@ -27,6 +27,10 @@ class EventsController < ApplicationController
     @comment = Comment.new
   end
 
+  def edit
+    @announcement = Announcement.new
+  end
+
   def update
     if @event.update(event_params)
       flash[:success] = "Event was successfully updated"
