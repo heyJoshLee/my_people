@@ -11,10 +11,18 @@ class Event < ActiveRecord::Base
   has_many :comments, -> {order("created_at DESC")}, as: :commentable
   has_many :announcements, -> {order("position ASC")}, as: :announceable
 
+  belongs_to :category
+
   before_create :generate_random_slug
+
+  mount_uploader :cover_img, CoverImgUploader
 
   def generate_random_slug
     self.slug = SecureRandom.urlsafe_base64
+  end
+
+  def self.upcoming
+    where(["date_time > ?", DateTime.now.beginning_of_day]).order("date_time ASC")
   end
 
   def to_param
@@ -30,7 +38,7 @@ class Event < ActiveRecord::Base
   end
 
   def description_truncated(max=140)
-    description[0..max]
+    description.length < max ? description : description[0..max] + "..."
   end
 
   def set_announcements_positions

@@ -15,10 +15,12 @@ class User < ActiveRecord::Base
 
   has_many :rsvps
 
-  before_create :generate_random_slug
 
   has_many :comments, -> {order("created_at DESC")}, as: :commentable
 
+  before_create :generate_random_slug
+
+  mount_uploader :profile_img, ProfileImgUploader
 
 
   def is_member_of?(group)

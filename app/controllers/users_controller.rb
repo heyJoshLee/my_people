@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :set_user, only: [:show, :update, :edit]
+  before_filter :redirect_if_user_cant_edit_profile, only: [:update, :edit]
 
   def new
     @user = User.new
@@ -18,9 +19,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def my_profile
+    @user = current_user
+    binding.pry
+    render "users/show"
+  end
+
   def update
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      flash[:success] = "Your account was saved"
+      redirect_to user_path(@user)
+    else
+      flash[:danger] = "There was an error and your changes were not saved"
+      render :edit
+    end
   end
 
   def show
@@ -29,12 +41,19 @@ class UsersController < ApplicationController
 
   private
 
+  def redirect_if_user_cant_edit_profile
+    unless current_user == @user
+      flash[:danger] = "You don't have permission to do that"
+      redirect_to home_path 
+    end
+  end
+
   def set_user
     @user = User.find_by(slug: params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :private_profile)
+    params.require(:user).permit(:name, :email, :password, :private_profile, :profile_img)
   end
 
 end

@@ -1,6 +1,4 @@
 ## TODO
-* Add profile picture upload
-* Add event / group picture upload
 * Feature tests
 * Fix  rsvp button
 * RSVP AJAX change

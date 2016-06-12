@@ -1,0 +1,13 @@
+- events.each do |event|
+  .col-md-4
+    .thumbnail.event_preview
+      = image_tag event.cover_img.thumbnail
+      .caption
+        %h3
+          = link_to event.name, event_path(event)
+        %small= event.date_time
+        %p.description_truncated= event.description_truncated
+        = link_to event_path(event) do
+          .btn.btn-primary Event Info
+        = link_to category_path(event.category) do
+          .btn.btn-default= event.category.name

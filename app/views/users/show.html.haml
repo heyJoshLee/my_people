@@ -4,7 +4,7 @@
       %h2 This profile is private
   - else
     %h1 #{@user.name}'s profile
-    %img.img-circle{:src => "http://placehold.it/100x100"}/
+    %img.img-circle{:src => "#{@user.profile_img}"}/
     - if @user.profile_description
       .well.v_margin= @user.profile_description
     .row

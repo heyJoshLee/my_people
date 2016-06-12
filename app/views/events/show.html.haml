@@ -1,10 +1,11 @@
 .show_event_main
   .row
     %header
-      .col-md-8
-        %h2= @event.name
-        %h5= @event.street_address
-        %small= @event.date_time
+      .col-md-8.large_cover_image{style: "background-image: url(#{@event.cover_img});"}
+        .header_information
+          %h2= @event.name
+          %h5= @event.street_address
+          %small= @event.date_time
       = render "users/creator", object: @event
   #button_container
     = render_rsvp_button

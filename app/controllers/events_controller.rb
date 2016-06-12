@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update]
 
   def index
-    @events = Event.all
+    @upcoming_events = Event.upcoming
   end
   def new
     @event = Event.new

@@ -1,6 +1,5 @@
 class Group < ActiveRecord::Base
   include Sluggable
-  mount_uploader :cover_img, CoverImgUploader
 
   sluggable_column :name
 
@@ -25,8 +24,10 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :users, through: :memberships
 
-
   belongs_to :category
+
+  mount_uploader :cover_img, CoverImgUploader
+  
   def members
     users.order("created_at DESC")
   end

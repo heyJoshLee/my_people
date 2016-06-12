@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "sign_in", to: "sessions#create"
   get "sign_out", to: "sessions#destroy"
   get "new", to: "pages#new_event_or_group"
+  get "my_profile", to: "users#my_profile"
   
 
 

@@ -1,14 +1,14 @@
 .show_group_main
-  %img{:src => "#{@group.cover_img}", :alt => ""}/
   %header.row
-    .col-md-8
-      %h1=  @group.name
-      - if current_user.can_modify_group?(@group)
-        %small.blue_text
-          = link_to "Modify Group", edit_group_path(@group)
-      %h4
-        = link_to @group.category.name, category_path(@group.category)
-      %small #{@group.city}, #{@group.state} #{@group.zip_code}
+    .col-md-8.large_cover_image{style: "background-image: url(#{@group.cover_img});"}
+      .header_information
+        %h1=  @group.name
+        - if current_user.can_modify_group?(@group)
+          %small.blue_text
+            = link_to "Modify Group", edit_group_path(@group)
+        %h4
+          = link_to @group.category.name, category_path(@group.category)
+        %small #{@group.city}, #{@group.state} #{@group.zip_code}
     .col-md-2
       %h4 Group Leader
       %h5= @group.creator.name
