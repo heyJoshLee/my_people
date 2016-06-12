@@ -26,4 +26,10 @@ $(function() {
     $("#new_announcemnt_form").toggle();
   });
 
+  $(".reset_password_type").on("click", function(e) {
+    e.preventDefault();
+    $(event.target).next("form").show();
+    $(event.target).hide();
+  });
+
 });

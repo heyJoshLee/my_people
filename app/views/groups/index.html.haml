@@ -1,5 +1,6 @@
 %h1 All groups
-
-- @groups.each do |group|
-  = link_to group.name, group_path(group)
-  %br/
+- Category.all.each do |category|
+  %h2= category.name
+  %hr/
+  .row-fluid.category_preview_row
+    = render "groups_previews_main", groups: category.most_popular_groups

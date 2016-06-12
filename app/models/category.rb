@@ -13,4 +13,8 @@ class Category < ActiveRecord::Base
     Event.where(category_id: id)
   end
 
+  def most_popular_groups
+    groups.order("created_at ASC").limit(5)
+  end
+
 end

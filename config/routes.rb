@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get "sign_out", to: "sessions#destroy"
   get "new", to: "pages#new_event_or_group"
   get "my_profile", to: "users#my_profile"
+
+  resources :forgot_passwords, only: [:new, :create]
+
+  resources :reset_password, only: [:new, :create]
   
 
 

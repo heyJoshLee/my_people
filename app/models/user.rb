@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_img, ProfileImgUploader
 
-
   def is_member_of?(group)
     groups.where(id: group.id).length > 0 ? true : false
   end
@@ -54,6 +53,10 @@ class User < ActiveRecord::Base
     self.is_admin? || self == event.creator
   end
 
+  def generate_password_reset_token
+
+  end
+
   def to_param
     self.slug
   end
@@ -72,5 +75,6 @@ class User < ActiveRecord::Base
   def has_groups?
     groups.length > 0
   end
+
 
 end

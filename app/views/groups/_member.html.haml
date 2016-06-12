@@ -1,5 +1,5 @@
 %li.row.member_preview
-  .col-md-8.attendee_name
+  .col-md-4.attendee_name
     = link_to member.name, user_path(member)
-  .col-md-4
-    %img.circle{:src => "http://placehold.it/100x100"}/
+  .col-md-2
+    = image_tag member.profile_img.thumbnail, class: "img-circle profile_thumb_extra_small"

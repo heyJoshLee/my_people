@@ -20,9 +20,7 @@ class UsersController < ApplicationController
   end
 
   def my_profile
-    @user = current_user
-    binding.pry
-    render "users/show"
+    redirect_to user_path(current_user)
   end
 
   def update

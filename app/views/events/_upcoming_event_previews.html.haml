@@ -1,7 +1,8 @@
 - events.each do |event|
   .col-md-4
     .thumbnail.event_preview
-      = image_tag event.cover_img.thumbnail
+      = link_to event_path(event) do
+        = image_tag event.cover_img.thumbnail
       .caption
         %h3
           = link_to event.name, event_path(event)

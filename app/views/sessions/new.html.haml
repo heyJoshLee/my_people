@@ -6,3 +6,5 @@
     = label_tag :password, "Password", class: "hide_me"
     = password_field_tag :password, "Password", class: "form-control"
     %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Sign In
+
+    = link_to "Forgot password?", new_forgot_password_path, class: "small, blue_text"

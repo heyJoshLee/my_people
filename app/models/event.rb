@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
   has_many :announcements, -> {order("position ASC")}, as: :announceable
 
   belongs_to :category
+  belongs_to :group
 
   before_create :generate_random_slug
 
@@ -38,7 +39,7 @@ class Event < ActiveRecord::Base
   end
 
   def description_truncated(max=140)
-    description.length < max ? description : description[0..max] + "..."
+    description.length < max ? description : description[0..max] + " ..."
   end
 
   def set_announcements_positions

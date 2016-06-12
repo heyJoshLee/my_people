@@ -33,7 +33,7 @@ li {
 }
 
 ul {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .home_page_wlecome_div {
@@ -282,3 +282,79 @@ main {
     height: 80px;
   }
 }
+
+.category_preview_row {
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+.description_and_members {
+  max-height: 800px;
+}
+
+.profile_thumb_extra_small {
+  width: 50px;
+  height: 50px;
+}
+
+$member_border_color: 1px solid rgba(100, 100, 100, 0.1);
+
+.member_preview  {
+  &:last-child {
+    border-bottom: $member_border_color;
+  }
+  padding: 15px 0;
+  +.member_preview {
+    border-top: $member_border_color;
+  }
+}
+
+.user_profile_comment {
+  width: 75px;
+  height: 75px;
+}
+
+.upcoming_events_for_group_image {
+  width: 150px;
+  height: 150px;
+}
+
+.upcoming_events_for_group {
+  padding: 10px;
+  .upcoming_event_for_group {
+    padding: 10px 5px;
+    &:last-child {
+      border-bottom: $member_border_color;
+    }
+    +.upcoming_event_for_group {
+      border-top: $member_border_color;
+    }
+  }
+}
+
+.size_150 {
+  height: 150px;
+  width: 150px;
+}
+
+
+.forgot_passwords_reset_type {
+  box-sizing: border-box;
+  height: 400px;
+  padding: 200px  0 0 0 ;
+  background-color: rgba(189, 195, 199, 0.1);
+
+  form {
+    display: none;
+  }
+
+  .reset_password_type {
+    font-size: 20px;
+    height: 50px;
+    width: 180px;
+    h2 {
+      margin: 0;
+    }
+  }
+}
+

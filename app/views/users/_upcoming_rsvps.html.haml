@@ -1,0 +1,15 @@
+.col-md-6.user_page_rsvps_and_groups
+  - if @user.upcoming_rsvps 
+    %h3 Upcoming Events
+    .upcoming_rsvps
+      %ul.upcoming_events_for_group
+        - @user.upcoming_rsvps.each do |event|
+          %li.row.upcoming_event_for_group
+            .col-md-3
+              = link_to event_path(event) do
+                .upcoming_events_for_group_image
+                  = image_tag event.cover_img.thumbnail, class: "size_150"
+            = link_to event_path(event) do
+              %h3= event.name
+            %h6= event.date_time
+            %p= event.description_truncated(330)

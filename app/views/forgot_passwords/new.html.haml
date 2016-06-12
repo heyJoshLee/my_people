@@ -1,0 +1,32 @@
+%h2 Forgot password reset
+
+.forgot_passwords_reset_type.row
+
+  .col-md-4.col-md-offset-2
+    %a.btn.btn-primary.reset_password_type Reset by email
+
+    = form_tag forgot_passwords_path, id: "reset_by_email_form" do
+      .input-group.v_margin
+        = email_field_tag :user, "Email", class: "form-control"
+        %span.input-group-addon
+          %i.glyphicon.glyphicon-envelope
+      .form-group.col-md-12
+        = hidden_field "method", "email"
+        = submit_tag "Send password reset by email", class: "btn btn-primary form-control v_margin"
+
+  .col-md-4
+    = link_to "#" do
+      %a.btn.btn-primary.reset_password_type Reset by phone
+
+    = form_tag forgot_passwords_path, id: "reset_by_phone_form" do
+      .input-group.v_margin
+        = email_field_tag :email, "Email", class: "form-control"
+        %span.input-group-addon
+          %i.glyphicon.glyphicon-envelope
+      .input-group.v_margin
+        = phone_field_tag :phone, "Phone", class: "form-control", placeholder: "Phone"
+        %span.input-group-addon
+          %i.glyphicon.glyphicon-earphone
+      .form-group.col-md-12
+        = hidden_field "method", "phone"
+        = submit_tag "Send password reset by phone", class: "btn btn-primary form-control v_margin"

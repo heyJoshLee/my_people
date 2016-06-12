@@ -1,8 +1,10 @@
 %li.group_post
   .row
-    %p.col-md-6= comment.body
-    .col-md-2
-      %h5= comment.creator.name
-    .col-md-2
-      %img.circle{:src => "http://placehold.it/100x100"}/
-  %small= comment.created_at
+    %p.col-md-8= comment.body
+    .col-md-4
+      = image_tag comment.creator.profile_img.thumbnail, class: "img-circle user_profile_comment"
+  .row
+    .col-md-8
+      %small= comment.created_at
+    .col-md-4.center= comment.creator.name
+

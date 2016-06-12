@@ -23,6 +23,7 @@ class Group < ActiveRecord::Base
   
   has_many :memberships
   has_many :users, through: :memberships
+  has_many :events, -> {order("date_time ASC")}
 
   belongs_to :category
 
@@ -31,6 +32,11 @@ class Group < ActiveRecord::Base
   def members
     users.order("created_at DESC")
   end
+
+  def description_truncated(max=140)
+    description.length < max ? description : description[0..max] + "..."
+  end
+
 
   def set_announcements_positions
     ActiveRecord::Base.transaction do
@@ -44,4 +50,8 @@ class Group < ActiveRecord::Base
     !announcements.empty?
   end
 
+  def upcoming_events
+   events.where(["date_time > ?", DateTime.now.beginning_of_day])
+  end
+    
 end

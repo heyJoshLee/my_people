@@ -1,0 +1,11 @@
+%ul.upcoming_events_for_group
+  - @group.upcoming_events.each do |event|
+    %li.row.upcoming_event_for_group
+      .col-md-3
+        = link_to event_path(event) do
+          .upcoming_events_for_group_image
+            = image_tag event.cover_img.thumbnail, class: "size_150"
+      = link_to event_path(event) do
+        %h3= event.name
+      %h6= event.date_time
+      %p= event.description_truncated(330)
