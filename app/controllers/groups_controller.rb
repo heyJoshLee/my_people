@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.creator_id = current_user.id
     if @group.save
-      flash[:success] = "You group has been created."
+      flash[:success] = "Your group has been created."
       redirect_to group_path(@group)
     else
       flash[:danger] = "There was an error and your group was not created."

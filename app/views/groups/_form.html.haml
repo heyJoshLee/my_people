@@ -13,5 +13,6 @@
     = f.text_field :country
   .form-group
     = f.text_area :description, rows: 5
+    = f.file_field :cover_img, class: "btn btn-file"
   .form_group
   = f.submit (@group.new_record? ? "Create Group" : "Save Group"), class: "btn btn-primary"
