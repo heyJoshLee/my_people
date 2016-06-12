@@ -223,3 +223,31 @@ main {
 #add_new_announcemet:hover {
   cursor: pointer;
 }
+
+.new_event_or_group_container {
+  background-color: rgba(189, 195, 199, 0.1);
+  padding: 20px;
+  margin: 20px;
+  text-align:  center;
+  height: 400px;
+  border-radius: 10px;
+
+  .new_event_or_group_section {
+      height: 380px;
+      box-sizing: border-box;
+      padding-top: 130px;
+      .new_event_section_form_opener,
+      .new_group_section_form_opener {
+        display: inline-block;
+        box-sizing: border-box;
+        padding-top: 10px;
+        height: 80px;
+        width: 80%;
+      }
+  }
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}

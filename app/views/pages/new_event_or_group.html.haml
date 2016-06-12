@@ -1,0 +1,11 @@
+%h1.center.v_margin What do you want to create?
+
+.row.new_event_or_group_container
+  .col-md-6.new_event_or_group_section
+    = link_to new_group_path do
+      .btn.btn-primary.new_group_section_form_opener
+        %h3 New Group
+  .col-md-6.new_event_or_group_section
+    = link_to new_event_path do
+      .btn.btn-primary.new_event_section_form_opener
+        %h3 New Event

@@ -15,6 +15,13 @@
           = link_to "Events", events_path
         %li
           = link_to "Groups", groups_path
+        %li
+          = link_to new_path do
+            .row
+              .col-sm-1
+                .glyphicon.glyphicon-plus
+              .col-sm-1
+                New
       %ul.nav.navbar-nav.navbar-right
         - if logged_in?
           %li

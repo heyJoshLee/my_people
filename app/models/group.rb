@@ -24,6 +24,7 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :users, through: :memberships
 
+  belongs_to :category
   def members
     users.order("created_at DESC")
   end

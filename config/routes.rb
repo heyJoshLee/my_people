@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   get "ui(/:action)", controller: "ui"
   get "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
-
   get "sign_out", to: "sessions#destroy"
+  get "new", to: "pages#new_event_or_group"
   
-  get "event_not_found", to: "events#not_found"
+
 
   root to: "pages#home"
 

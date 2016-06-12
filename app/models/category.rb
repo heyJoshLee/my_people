@@ -5,5 +5,12 @@ class Category < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 4, maximum: 30 }
   validates_uniqueness_of :name, case_sensitive: false
 
+  def groups
+    Group.where(category_id: id)
+  end
+
+  def events
+    Event.where(category_id: id)
+  end
 
 end
