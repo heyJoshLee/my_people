@@ -6,6 +6,8 @@
       .caption
         %h3
           = link_to event.name, event_path(event)
+        %small #{event.all_going.count} going
+        %br/
         %small= event.date_time
         %p.description_truncated= event.description_truncated
         = link_to event_path(event) do

@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
 
 
   has_many :rsvps
-
+  has_many :following_relationships, -> {order("created_at ASC")}, class_name: "Relationship", foreign_key: :follower_id
+  has_many :leading_relationships, -> {order("created_at ASC")}, class_name: "Relationship", foreign_key: :leader_id
 
   has_many :comments, -> {order("created_at DESC")}, as: :commentable
 
@@ -39,6 +40,14 @@ class User < ActiveRecord::Base
     !memberships.where(group_id: group.id, role: "admin").empty?
   end
 
+  def follows?(other_user)
+    following_relationships.map(&:leader).include?(other_user)
+  end
+
+  def can_follow?(other_user)
+    !(self.follows?(other_user) || self == other_user)
+  end
+
   def is_admin?
     role == "admin"
   end
@@ -54,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_password_reset_token
-    self.updSecureRandom.hex(10)
+    self.SecureRandom.hex(10)
   end
 
   def to_param

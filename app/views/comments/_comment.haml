@@ -2,7 +2,8 @@
   .row
     %p.col-md-8= comment.body
     .col-md-4
-      = image_tag comment.creator.profile_img.thumbnail, class: "img-circle user_profile_comment"
+      = link_to user_path(comment.creator) do
+        = image_tag comment.creator.profile_img.thumbnail, class: "img-circle user_profile_comment"
   .row
     .col-md-8
       %small= comment.created_at

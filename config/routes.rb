@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "sign_out", to: "sessions#destroy"
   get "new", to: "pages#new_event_or_group"
   get "my_profile", to: "users#my_profile"
+  get "people_i_follow", to: "relationships#index"
+
+  resources :relationships, only: [:create, :destroy]
 
   resources :forgot_passwords, only: [:new, :create]
 

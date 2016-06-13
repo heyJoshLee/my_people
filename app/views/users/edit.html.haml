@@ -1,4 +1,8 @@
 .show_user_main
+  - if @new_account
+    .new_account_prompt.center.well
+      %h2 Welcome to My People
+      %p Please start by uploading a profile picture and adding a description so people know about you.
   %h1 Update Account
   .container
     = bootstrap_form_for @user, class: "form-register" do |f|

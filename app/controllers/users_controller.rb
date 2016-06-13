@@ -11,8 +11,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       AppMailer.send_welcome_email(@user).deliver
-      flash[:success] = "Your account was created. Please log in."
-      redirect_to sign_in_path
+      flash[:success] = "Your account was created."
+      session[:user_id] = @user.id
+      @new_account = true
+      @user = current_user
+      render "users/edit"
     else
       flash.now[:danger] = "Something went wrong and your account was not created."
       render :new
@@ -42,7 +45,7 @@ class UsersController < ApplicationController
   def redirect_if_user_cant_edit_profile
     unless current_user == @user
       flash[:danger] = "You don't have permission to do that"
-      redirect_to home_path 
+      redirect_to root_path 
     end
   end
 

@@ -16,7 +16,7 @@
     .col-md-8
       %p.well= @group.description
     .col-md-4
-      %h4.remove_top_margin Members
+      %h4.remove_top_margin Members (#{@group.members.count})
       %hr/
       %ul.members_preview
         - @group.members.each do |member|

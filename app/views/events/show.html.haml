@@ -17,7 +17,7 @@
       %h4.remove_top_margin Attendees
       %ul.nav.nav-tabs
         %li.nav.active
-          %a{"data-toggle" => "tab", :href => "#going"} Going
+          %a{"data-toggle" => "tab", :href => "#going"} Going (#{@event.all_going.count})
         %li.nav
           %a{"data-toggle" => "tab", :href => "#not_going"} Not Going
       / Tab panes

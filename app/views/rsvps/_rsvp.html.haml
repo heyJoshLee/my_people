@@ -1,4 +1,5 @@
 %li.row.attendee
-  .col-md-8.attendee_name= rsvp.user.name
+  .col-md-4.attendee_name= rsvp.user.name
   .col-md-4
-    %img.circle{:src => "http://placehold.it/100x100"}/
+    = link_to user_path(rsvp.user) do
+      = image_tag rsvp.user.profile_img.thumbnail, class: "img-circle profile_thumb_extra_small"
