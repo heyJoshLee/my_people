@@ -1,4 +1,4 @@
-Myflix::Application.configure do
+MyCity::Application.configure do
 
   config.cache_classes = true
   config.eager_load = true
@@ -25,7 +25,7 @@ Myflix::Application.configure do
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'myflix.herokuapp.com', #eg: 'yourappname.herokuapp.com'
+    :domain         => 'mycity-jl.herokuapp.com', #eg: 'yourappname.herokuapp.com'
     :authentication => :plain,
   }
 end
