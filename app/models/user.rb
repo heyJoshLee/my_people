@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_password_reset_token
-
+    self.updSecureRandom.hex(10)
   end
 
   def to_param

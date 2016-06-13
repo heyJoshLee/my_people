@@ -9,4 +9,13 @@ class ForgotPasswordsController < ApplicationController
     end
   end
 
+  def send_password_reset_by_phone 
+    
+  end
+
+  def send_password_reset_by_email=
+    
+  end
+
+
 end
