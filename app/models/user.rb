@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     !memberships.where(group_id: group.id, role: "admin").empty?
   end
 
+  def follow(other_user)
+    Relationship.create(follower: current_user, leader: other_user) if current_user.can_follow?(other_user)
+  end
+
   def follows?(other_user)
     following_relationships.map(&:leader).include?(other_user)
   end

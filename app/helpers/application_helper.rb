@@ -19,6 +19,16 @@ module ApplicationHelper
     end
   end
 
+  def render_follow_button(another_user=nil)
+    return unless curent_user
+    other_user = another_user || @user
+    if current_user.can_follow(other_user)
+      render partial: "relationships/follow_button"
+    else
+      # render unfollow button
+    end
+  end
+
 end
 
 

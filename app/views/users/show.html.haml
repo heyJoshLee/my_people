@@ -5,6 +5,7 @@
   - else
     %h1 #{@user.name}'s profile
     %img.img-circle{:src => "#{@user.profile_img}"}/
+    = render_follow_button
     - if @user.profile_description
       .well.v_margin= @user.profile_description
     .row
