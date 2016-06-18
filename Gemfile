@@ -21,6 +21,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem "carrierwave"
 gem 'carrierwave-aws'
 gem "mini_magick"
+gem "draper"
+gem 'zip-codes'
 
 
 
@@ -53,3 +55,5 @@ group :production do
 end
 
 
+
+gem 'mocha', group: :test

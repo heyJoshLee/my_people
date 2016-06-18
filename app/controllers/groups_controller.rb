@@ -6,19 +6,27 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
   end
-  
+
   def new
     @group = Group.new
   end
 
   def create
     @group = Group.new(group_params)
+
     @group.creator_id = current_user.id
-    if @group.save
-      flash[:success] = "Your group has been created."
-      redirect_to group_path(@group)
+
+    if set_city_and_state
+
+      if @group.save
+        flash[:success] = "Your group has been created."
+        redirect_to group_path(@group)
+      else
+        flash.now[:danger] = "There was an error and your group was not created."
+        render :new
+      end
     else
-      flash[:danger] = "There was an error and your group was not created."
+      flash.now[:danger] = "Not a valid Zip code."
       render :new
     end
   end
@@ -43,6 +51,16 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  def set_city_and_state
+    address_info = ZipCodes.identify(@group.zip_code)
+    if address_info
+      @group.city = address_info[:city]
+      @group.state = address_info[:state_name]
+    else
+      false
+    end
+  end
 
   def set_group
     @group = Group.find_by(slug: params[:id])

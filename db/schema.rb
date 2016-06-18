@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613152007) do
+ActiveRecord::Schema.define(version: 20160618070156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20160613152007) do
     t.string   "img"
     t.string   "cover_img"
     t.integer  "group_id"
+    t.string   "city"
+    t.string   "state"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -70,7 +72,6 @@ ActiveRecord::Schema.define(version: 20160613152007) do
     t.string   "slug"
     t.string   "city"
     t.string   "state"
-    t.string   "country"
     t.integer  "category_id"
     t.string   "zip_code"
     t.string   "cover_img"

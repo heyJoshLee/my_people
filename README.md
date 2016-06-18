@@ -7,6 +7,5 @@
 * Show on map
 * Add password rest by email and text
 * Invite by email
-* Add Friends
 * Add Facebook login
 * Format timezones

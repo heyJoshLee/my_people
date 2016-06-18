@@ -3,12 +3,13 @@
     %header
       .col-md-8.large_cover_image{style: "background-image: url(#{@event.cover_img});"}
         .header_information
-          %h2= @event.name
-          %h5= @event.street_address
+          %h2.v_margin= @event.name
+          %h5= @event.city + ", " +  @event.state
+          %h5.v_margin= @event.street_address
           %small= @event.date_time
       = render "users/creator", object: @event
   #button_container
-    = render_rsvp_button
+    = @event.rsvp_button(logged_in?, @event)
 
   %img{:src => "#{@event.img}", :alt => ""}/
   .row

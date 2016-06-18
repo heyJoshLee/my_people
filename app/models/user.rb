@@ -32,6 +32,11 @@ class User < ActiveRecord::Base
     rsvp && rsvp.going
   end
 
+  def has_unrsvpd?(event)
+    rsvp = rsvps.where(event_id: event.id).first
+    rsvp && !rsvp.going
+  end
+
   def generate_random_slug
     self.slug = SecureRandom.urlsafe_base64
   end
@@ -67,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_password_reset_token
-    self.SecureRandom.hex(10)
+    self.update_column(:password_reset_token, SecureRandom.hex(10))
   end
 
   def to_param

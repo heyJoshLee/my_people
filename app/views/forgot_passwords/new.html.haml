@@ -7,11 +7,11 @@
 
     = form_tag forgot_passwords_path, id: "reset_by_email_form" do
       .input-group.v_margin
-        = email_field_tag :user, "Email", class: "form-control"
+        = email_field_tag :email, "Email", class: "form-control"
         %span.input-group-addon
           %i.glyphicon.glyphicon-envelope
       .form-group.col-md-12
-        = hidden_field "method", "email"
+        = hidden_field_tag :method, "email"
         = submit_tag "Send password reset by email", class: "btn btn-primary form-control v_margin"
 
   .col-md-4
@@ -28,5 +28,5 @@
         %span.input-group-addon
           %i.glyphicon.glyphicon-earphone
       .form-group.col-md-12
-        = hidden_field "method", "phone"
+        = hidden_field_tag :method, "phone"
         = submit_tag "Send password reset by phone", class: "btn btn-primary form-control v_margin"

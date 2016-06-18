@@ -142,4 +142,35 @@ describe User do
       expect(user.can_modify_event?(event)).to be_falsey
     end
   end
+
+  describe "#has_unrsvpd?(event)" do
+    let(:user) { Fabricate(:user) }
+    let(:event) { Fabricate(:event) }
+
+    it "returns true is user has an rsvp for the event marked as false" do
+      user.rsvps.create(event: event, going: false)
+      expect(user.has_unrsvpd?(event)).to be_truthy
+    end
+    it "returns false if user doesn't have an rsvp for the event" do
+      expect(user.has_unrsvpd?(event)).to be_falsey
+    end
+
+    it "returns false if the user has a rsvp for the event marked as true" do
+      user.rsvps.create(event: event, going: true)
+      expect(user.has_unrsvpd?(event)).to be_falsey
+    end
+  end
+
+  describe "#has_groups?" do
+    let(:alice) { Fabricate(:user) }
+    let(:group) { Fabricate(:group) }
+
+    it "returns true if the user is a member of any groups" do
+      Membership.create(user: alice, group: group)
+      expect(alice.has_groups?).to be_truthy
+    end
+    it "returns false if the user doesn't have any memberships" do
+      expect(alice.has_groups?).to be_falsey
+    end
+  end
 end

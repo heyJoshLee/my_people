@@ -21,8 +21,8 @@ describe UsersController do
         ActionMailer::Base.deliveries.clear
       end
 
-      it "redirects to log in path" do
-        expect(response).to redirect_to sign_in_path
+      it "renders edit template" do
+        expect(response).to render_template :edit
       end
 
       it "creates user" do
