@@ -12,6 +12,7 @@
     = @event.rsvp_button(logged_in?, @event)
 
   %img{:src => "#{@event.img}", :alt => ""}/
+  
   .row
     %p.well.col-md-8= @event.description
     .col-md-4
@@ -31,6 +32,12 @@
             = render "rsvps/rsvp", rsvp: rsvp
   = render "shared/announcements_section", object: @event
 
+  %h3 Location
+  %h5.v_margin= @event.street_address
+  %h5= @event.city + ", " +  @event.state
+  .row
+    .col-md-4.col-md-offset-1
+      = image_tag @event.map_image_url
   %h4 Posts
   %hr/
   = render "comments/comments_section", object: @event, object_type: "Event"

@@ -38,6 +38,23 @@ class Event < ActiveRecord::Base
     rsvps.where(going: false)
   end
 
+  def formatted_address
+    output = street_address.strip.gsub(" ", "-") + "," +
+    city.strip.gsub(" ", "-") + "," +
+    state.strip.gsub(" ", "-")
+    output
+  end
+
+  def generate_map_image
+    url = "https://maps.googleapis.com/maps/api/staticmap?center="+ 
+    formatted_address +
+    "&zoom=13&size=600x300&maptype=roadmap&" +
+    "markers=color: blue%7Clabel:X%7C" +
+    formatted_address +
+    "&key=" + ENV['GOOGLE_MAPS_API_KEY']
+    assign_attributes({map_image_url: url})
+  end
+
   def description_truncated(max=140)
     description.length < max ? description : description[0..max] + " ..."
   end

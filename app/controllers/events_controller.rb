@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
+  include ActiveModel::Dirty
 
   before_filter :require_user, only: [:create, :new]
   before_filter :set_event, only: [:edit, :update]
+
 
   def index
     @upcoming_events = Event.upcoming
@@ -16,6 +18,7 @@ class EventsController < ApplicationController
     @event.creator = current_user
 
     if set_city_and_state
+      @event.generate_map_image
 
       if @event.save
         flash[:success] = "Your event has been created"
@@ -41,7 +44,13 @@ class EventsController < ApplicationController
   end
 
   def update
+    old_address = @event.formatted_address
     if @event.update(event_params)
+      binding.pry
+      unless old_address == @event.formatted_address
+        @event.generate_map_image
+        @event.save
+      end
       flash[:success] = "Event was successfully updated"
       redirect_to event_path(@event)
     else

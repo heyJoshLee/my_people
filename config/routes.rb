@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get "ui(/:action)", controller: "ui"
   get "sign_in", to: "sessions#new"
-  post "sign_in", to: "sessions#create"zz
+  post "sign_in", to: "sessions#create"
   get "sign_out", to: "sessions#destroy"
   get "new", to: "pages#new_event_or_group"
   get "my_profile", to: "users#my_profile"
@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   resources :forgot_passwords, only: [:new, :create]
 
   resources :reset_password, only: [:new, :create]
-  
-
 
   root to: "pages#home"
 

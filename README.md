@@ -6,6 +6,7 @@
 * RSVP AJAX change
 
 * Add search city
+
 * View events close to me
 * Show on map
 
@@ -14,3 +15,5 @@
 
 * Add Facebook login
 * Format timezones
+
+# fix datetime picker
