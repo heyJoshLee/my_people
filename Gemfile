@@ -23,6 +23,9 @@ gem 'carrierwave-aws'
 gem "mini_magick"
 gem "draper"
 gem 'zip-codes'
+gem "figaro"
+
+
 
 
 
@@ -53,7 +56,6 @@ end
 group :production do
   gem 'rails_12factor'
 end
-
 
 
 gem 'mocha', group: :test

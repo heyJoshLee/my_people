@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
   get "ui(/:action)", controller: "ui"
   get "sign_in", to: "sessions#new"
-  post "sign_in", to: "sessions#create"
+  post "sign_in", to: "sessions#create"zz
   get "sign_out", to: "sessions#destroy"
   get "new", to: "pages#new_event_or_group"
   get "my_profile", to: "users#my_profile"
   get "people_i_follow", to: "relationships#index"
+
 
   resources :relationships, only: [:create, :destroy]
 

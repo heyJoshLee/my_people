@@ -1,11 +1,16 @@
 ## TODO
+
 * Feature tests
-* Fix  rsvp button
+
+* Fix rsvp button
 * RSVP AJAX change
+
 * Add search city
 * View events close to me
 * Show on map
-* Add password rest by email and text
+
+* Add password reset by email and text
 * Invite by email
+
 * Add Facebook login
 * Format timezones
