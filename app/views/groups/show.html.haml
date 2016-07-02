@@ -11,7 +11,7 @@
         %small #{@group.city}, #{@group.state} #{@group.zip_code}
     = render "creator", creator: @group.creator
   #button_container
-    = render_join_or_leave_group_button
+    = @group.render_join_or_leave_group_button(logged_in?)
   .row.description_and_members
     .col-md-8
       %p.well= @group.description

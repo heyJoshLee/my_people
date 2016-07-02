@@ -9,7 +9,8 @@
           %small= @event.date_time
       = render "users/creator", object: @event
   #button_container
-    = @event.rsvp_button(logged_in?, @event)
+
+    = @event.render_rsvp_button(logged_in?, @event)
 
   %img{:src => "#{@event.img}", :alt => ""}/
   

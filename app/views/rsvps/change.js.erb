@@ -1,0 +1,10 @@
+console.log("<%= @going %>");
+console.log("<%= @event_id %>");
+if ("<%=@going%>" === "true" ) {
+  $("#button_container").html("<%= j (render partial: rsvps/un_rsvp_button', locals: { event: @event_id }) %>")
+  console.log("This person is already going to the event")
+} else if ("<%=@going%>" === "false" ) {
+  console.log("This person has un-rsvped in the past")
+} else {
+  console.log("Error")
+}

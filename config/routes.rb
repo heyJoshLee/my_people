@@ -36,7 +36,11 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: [:create]
-    resources :rsvps, only: [:create]
+    resources :rsvps, only: [:create, :update] do
+      member do 
+        post "change"
+      end
+    end
   end
 
   resources :categories, only: [:new, :create, :show, :index]

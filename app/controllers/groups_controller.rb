@@ -63,7 +63,7 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = Group.find_by(slug: params[:id])
+    @group = GroupDecorator.decorate(Group.find_by(slug: params[:id]))
   end
 
   def group_params

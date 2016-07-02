@@ -1,2 +1,2 @@
 .btn.btn-primary.v_margin
-  = link_to "RSVP", event_rsvps_path(@event, going: true), method: "post", remote: true
+  = link_to "RSVP", new_event_rsvps_path(@event, going: true), method: "post", remote: true, format: "js"

@@ -15,25 +15,19 @@ class RsvpsController < ApplicationController
         format.js
       end
   end
+
+  def change
+    @going = params[:going]
+    rsvp = Rsvp.find(params[:id])
+    @event_id= rsvp.event.id
+    rsvp.update_column(:going, @going)
+    respond_to do |format|
+      format.html do
+          flash[:success] = "You have changed your rsvp."
+        redirect_to event_path(rsvp.event)
+      end
+      format.js
+    end
+  end
+
 end
-
-
-
-# def create
-#     @group = Group.find_by(slug: params[:group_id])
-#     @membership = Membership.new(group_id: @group.id, user_id: current_user.id, role: "user")
-#     respond_to do |format| 
-#       format.js do
-#         render :error unless @membership.save
-#       end
-#     end
-#   end
-
-#   def destroy
-#     membership = Membership.find(params[:id])
-#     @group = Group.find(membership.group_id)
-#     membership.destroy
-#     respond_to do |format|
-#       format.js
-#     end
-#   end

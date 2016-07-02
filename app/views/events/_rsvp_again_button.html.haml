@@ -1,5 +1,0 @@
-- @event ||= event
-- @membership = current_user.rsvps.where(event: @event)
-
-.btn.btn-primary.v_margin
-  = link_to "un-RSVP", event_rsvps_path(@event, going: false), method: "post", remote: true, data: {confirm: "Are you sure you want to un-RSVP for this event?"}

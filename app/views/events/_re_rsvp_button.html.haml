@@ -1,0 +1,5 @@
+- @event ||= Event.find(@event_id.to_i)
+- @rsvp = Rsvp.where(user: current_user, event: @event).first
+
+.btn.btn-primary.v_margin
+  = link_to "RSVP", change_event_rsvp_path(@event, @rsvp, going: true), method: "post", remote: false

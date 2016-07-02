@@ -21,6 +21,7 @@ class EventsController < ApplicationController
       @event.generate_map_image
 
       if @event.save
+        Rsvp.create(event: @event, user: current_user, going: true)
         flash[:success] = "Your event has been created"
         redirect_to event_path(@event)
       else
